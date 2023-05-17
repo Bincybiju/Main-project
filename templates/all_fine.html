@@ -1,0 +1,33 @@
+{% extends "staffhead.html" %}
+{% load static %}
+{% block content %}
+          <h2>Reprted Fine Historys</h2>
+            <table class="table table-responsive table-striped">
+          <thead>
+       <tr >
+                            <th>Sl.no</th>
+                            <th>vehicle no </th>
+                            <th>Fine amount </th>
+                            <th>fine Details</th>
+                           
+
+                          </tr>
+                          </thead>
+        
+        <tbody>
+           
+            {% for datas in data %}
+                    
+                                <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td>{{datas.Fine_vehicle}}
+                                </td>
+                                <td>{{datas.Fine_amount}}</td>
+                                <td>{{datas.Fine_details}}</td>
+                              
+                             
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        {% endblock %}

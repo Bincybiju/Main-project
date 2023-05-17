@@ -1,0 +1,40 @@
+{% extends "userhead.html" %}
+{% load static %}
+{% block content %}
+          <h2>Payment History</h2>
+            <table class="table table-responsive table-striped">
+          <thead>
+       <tr >
+                            <th>Sl.no</th>
+                            <th>Fine amount </th>
+                            <th>fine Details</th>
+                           
+
+                            <th>Repoted date</th>
+                            <th>REpted time</th>
+                        
+                            <th>Payed on </th>
+                         
+                           
+                        
+                            
+                          </tr>
+                          </thead>
+        
+        <tbody>
+           
+            {% for datas in data %}
+                    
+                                <tr>
+                                <td>{{ forloop.counter }}</td>
+                            
+                                <td>{{datas.Fine_id.Fine_amount}}</td>
+                                <td>{{datas.Fine_id.Fine_details}}</td>
+                                <td>{{datas.Fine_id.Report_id.Report_date}}</td>
+                                <td>{{datas.Fine_id.Report_id.Report_time}}</td>
+                                <td>{{datas.Pay_on}}</td>	
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        {% endblock %}

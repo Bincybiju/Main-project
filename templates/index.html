@@ -1,54 +1,159 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="//stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-      }
+{% load static %}
 
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
-    <link rel="stylesheet" href="/static/style.css">
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  		<title>Helmet Detection</title>
+<!-- 
 
-    <title>YOLOv5 Helmet Detection</title>
-  </head>
-  <body class="text-center">
-    <form class="form-signin" method=post enctype=multipart/form-data>
-        <img class="mb-4" src="/static/pytorch.png" alt="" width="72">
-        <h1 class="h3 mb-3 font-weight-normal">Upload an image</h1>
-        <input type="file" name="file" class="form-control-file" id="inputfile">
-        <br/>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Upload</button>
-        <p class="mt-5 mb-3 text-muted">Cloud Systems project 2021/22</p>
-    </form>
+Highway Template
+
+https://templatemo.com/tm-520-highway
+
+-->
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="apple-touch-icon" href="{% static 'public/apple-touch-icon.jpg' %}">
+
+        <link rel="stylesheet" href="{% static 'public/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'public/css/bootstrap-theme.min.css' %}">
+        <link rel="stylesheet" href="{% static 'public/css/fontAwesome.css' %}">
+        <link rel="stylesheet" href="{% static 'public/css/light-box.css' %}">
+        <link rel="stylesheet" href="{% static 'public/css/templatemo-style.css' %}">
+
+        <link href="https://fonts.googleapis.com/css?family=Kanit:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+        {% if msg != ""%}
+        <script>alert("{{msg}}");</script>
+        {% endif %}
+        <script src="{% static 'js/vendor/modernizr-2.8.3-respond-1.4.2.min.js' %}"></script>
+    </head>
+
+<body>
+
+    <nav>
+        <div class="logo">
+            <a href="index.html">Helmet Detection <em></em></a>
+        </div>
+       <!-- <div class="menu-icon">
+        <span></span>
+      </div>-->
+    </nav>
+
+    <div id="video-container">
+        <div class="video-overlay"></div>
+        <div class="video-content">
+            <div class="inner">
+              <h1>Welcome to <em>Helmet Detection</em></h1>
+             
+              <p></p>
+                <!--<div class="scroll-icon">
+                    <a class="scrollTo" data-scrollTo="portfolio" href="#"><img src="{% static 'public/img/scroll-icon.png' %}" alt=""></a>
+                </div> -->   
+            </div>
+        </div>
+        <video autoplay loop muted>
+        	<source src="{% static 'public/highway-loop.mp4' %}" type="video/mp4" />
+        </video>
+    </div>
+
+
+
+    <footer>
+        <div class="container-fluid">
+            <div class="col-md-12">
+                <p>Copyright &copy; 2023 Company Name 
+    
+    | Designed by TemplateMo</p>
+            </div>
+        </div>
+    </footer>
+
+
+      <!-- Modal button -->
+    <div class="popup-icon">
+      <button id="modBtn" class="modal-btn"><img src="{% static 'public/img/contact-icon.png' %}" alt=""></button>
+    </div>  
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+      <!-- Modal Content -->
+      <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h3 class="header-title"> <em>Login</em></h3>
+          <div class="close-btn"><img src="{% static 'public/img/close_contact.png' %}" alt=""></div>    
+        </div>
+        <!-- Modal Body -->
+        <div class="modal-body">
+          <div class="col-md-6 col-md-offset-3">
+            <form id="contact" action="{% url 'Login' %}" method="post">
+              {% csrf_token %}
+                <div class="row">
+                    <div class="col-md-12">
+                      <fieldset>
+                        <input name="t1" type="text" class="form-control" id="name" placeholder="Your Username..." required>
+                      </fieldset>
+                    </div>
+                    <div class="col-md-12">
+                      <fieldset>
+                        <input name="t2" type="password" class="form-control" id="email" placeholder="Your password..." required>
+                      </fieldset>
+                    </div>
+                 
+                    <div class="col-md-12">
+                      <fieldset>
+                        <button type="submit" id="form-submit" class="btn">Login</button>
+                      </fieldset>
+                    </div>
+                </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
     
 
-    <script src="//code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-    <script src="//stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-    <script type="text/javascript">
-      $('#inputfile').bind('change', function() {
-          let fileSize = this.files[0].size/1024/1024;
-          if (fileSize > 1) {
-            $("#inputfile").val(null);
-            alert('Image should be 1MB or smaller')
-            return
-          }
+    <section class="overlay-menu">
+      <div class="container">
+        <div class="row">
+          <div class="main-menu">
+              <ul>
+                  <li>
+                      <a href="index.html">Home - Full-width</a>
+                  </li>
+                  <li>
+                      <a href="masonry.html">Home - Masonry</a>
+                  </li>
+                  <li>
+                      <a href="grid.html">Home - Small-width</a>
+                  </li>
+                  <li>
+                      <a href="about.html">About Us</a>
+                  </li>
+                  <li>
+                      <a href="blog.html">Blog Entries</a>
+                  </li>
+                  <li>
+                      <a href="single-post.html">Single Post</a>
+                  </li>
+              </ul>
+              <p>We create awesome templates for you.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-          let ext = $('#inputfile').val().split('.').pop().toLowerCase();
-          if($.inArray(ext, ['jpg','jpeg']) == -1) {
-            $("#inputfile").val(null);
-            alert('This is not a JPG file.');
-          }
-      });
-    </script>
-  </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>window.jQuery || document.write("<script src={% static 'public/js/vendor/jquery-1.11.2.min.js' %}><\/script>")</script>
+
+    <script src="{% static 'public/js/vendor/bootstrap.min.js' %}"></script>
+    
+    <script src="{% static 'public/js/plugins.js' %}"></script>
+    <script src="{% static 'public/js/main.js' %}"></script>
+
+    
+</body>
 </html>

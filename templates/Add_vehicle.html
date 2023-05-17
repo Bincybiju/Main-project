@@ -1,0 +1,43 @@
+{% extends "staffhead.html" %}
+{% load static %}
+{% block content %}
+<H2 style="color:#13bef0">Register Vehicles</H2>
+<hr style="color:#13bef0"/>
+
+<form class="form-horizontal"  method="post" action="{% url 'Register_vehicle' %}">
+    {% csrf_token %}
+    <table class="table table-responsive table-striped">
+        <tr>
+            <th>Owner Name</th>
+            <th><input type="text" class="form-control" name="t1" required placeholder="enter owner Name"/></th>
+        </tr>
+        <tr>
+            <th>Owner address</th>
+            <th><textarea class="form-control" name="t2" required placeholder="enter owner Address"></textarea>
+            </th>
+        </tr>
+        <tr>
+            <th>Owner Email</th>
+            <th><input type="email" class="form-control" name="t3" required placeholder="enter owner email"/></th>
+        </tr>
+        <tr>
+            <th>Owner Phone</th>
+            <th><input type="number" minlength="10" maxlength="10" class="form-control" name="t4" required placeholder="enter owner phone no"/></th>
+        </tr>
+        <tr>
+            <th>Vehicle No.</th>
+            <th><input type="text" class="form-control" name="t5" required placeholder="enter vehicle No."/></th>
+        </tr>
+        <tr>
+            <th>Vehicle Type</th>
+            <th><input type="text" class="form-control" name="t6" required placeholder="enter vehicle type"/></th>
+        </tr>
+        <tr>
+            <th>Vehicle Details</th>
+            <th><textarea class="form-control" name="t7" required placeholder="enter vehicle deatils"></textarea></th>
+        </tr>
+        <tr>
+<th colspan="2"><button type="submit" class="btn btn-lg btn-success" style="height: fit-content;">save</button></th>
+        </tr>
+    </table>
+{% endblock %}
